@@ -11,7 +11,6 @@
     class="h-fit w-36 rounded-xl border-2 border-sky-900 bg-zinc-900 shadow shadow-slate-700 md:w-56"
   >
     <div class="h-52 w-full md:h-80">
-      <!-- image -->
       <img
         loading="lazy"
         draggable="false"
@@ -21,7 +20,6 @@
       />
     </div>
     <div class="flex flex-col items-center border-t-2 border-sky-900">
-      <!-- details -->
       <ShowRating :rating="show?.rating.average ?? 0"></ShowRating>
       <h3
         class="my-auto w-full overflow-hidden px-2 text-center text-sm text-nowrap text-ellipsis md:text-lg"

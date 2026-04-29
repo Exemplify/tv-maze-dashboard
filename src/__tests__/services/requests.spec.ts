@@ -1,4 +1,4 @@
-import { getShows, request } from '../../services/requests';
+import { request } from '../../services/requests';
 
 const mockFetch = vi.fn<() => void>();
 vi.stubGlobal('fetch', mockFetch);

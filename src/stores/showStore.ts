@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { getEpisodes, getShow, getShows } from '../services';
 import type { Show } from '../models';
+import { groupByGenre } from '../utils';
 
 export const useShowStore = defineStore('showStore', () => {
   const shows = ref<Show[]>([]);
@@ -12,25 +13,7 @@ export const useShowStore = defineStore('showStore', () => {
   const initialLoadShows = async () => {
     const initialShows = await Promise.all([getShows(), getShows(1), getShows(2)]);
     shows.value = initialShows.flat();
-
-    genres.value = Array.from(
-      shows.value.reduce((genreSet, show) => {
-        show.genres.forEach((genre) => genreSet.add(genre));
-        return genreSet;
-      }, new Set()),
-    ).sort() as string[];
-
-    showsByGenre.value = genres.value.map((genre) => {
-      const showsWithGenre = shows.value.filter((show) => {
-        return show.genres.includes(genre);
-      });
-      return {
-        genre,
-        shows: showsWithGenre.sort((showA, showB) =>
-          (showA?.rating?.average ?? 0) > (showB?.rating?.average ?? 0) ? -1 : 1,
-        ),
-      };
-    });
+    showsByGenre.value = groupByGenre(shows.value);
   };
 
   const loadShowDetails = async (showId: number) => {
