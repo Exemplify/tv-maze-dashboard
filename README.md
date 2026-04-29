@@ -1,6 +1,6 @@
 # tv-maze-dashboard
 
-This template should help get you started developing with Vue 3 in Vite.
+A vue.js based dashboard that integrates with the TV Maze API. (https://www.tvmaze.com/api)
 
 ## Recommended IDE Setup
 
@@ -52,3 +52,13 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+## Architechtural Decisions and Details
+
+Node version: 24.14.1
+Vue version: 3.5.32
+NPM version 11.4.2
+
+### Tailwind CSS
+
+The utility framework provided by tailwind simplifies implementation of components and enables responsive design without using an existing component library.
